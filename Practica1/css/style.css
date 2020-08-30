@@ -272,28 +272,15 @@ div[class^='nro']{
 
 .center::before{
     content:"";
-    width: 50%;
-    height: 50%;
-    border: .2rem solid var(--fluorescent-red);
-    border-radius: 50%;
-    position: absolute;
-    top: 20%;
-    left: 19%;
-    transition: background-color 0.3s;
-}
-.center::after{
-    content:"";
-    width: 10%;
-    height: 30%;
-    border: .2rem solid #222222;
+    width: 90%;
+    height: 90%;
     background-color: var(--fluorescent-red);
-    border-radius: 1rem;
+    clip-path: polygon(65% 30%, 65% 27%, 67% 24%, 71% 23%, 75% 25%, 78% 29%, 81% 33%, 83% 38%, 85% 44%, 86% 49%, 85% 54%, 84% 59%, 83% 64%, 79% 70%, 73% 77%, 66% 82%, 56% 85%, 46% 85%, 37% 83%, 30% 79%, 23% 73%, 17% 64%, 15% 55%, 15% 46%, 17% 37%, 20% 31%, 26% 24%, 31% 23%, 34% 25%, 35% 28%, 34% 32%, 30% 36%, 28% 41%, 26% 46%, 26% 52%, 28% 58%, 31% 64%, 34% 67%, 39% 70%, 45% 72%, 53% 73%, 62% 70%, 68% 65%, 72% 57%, 73% 53%, 73% 46%, 72% 40%, 68% 35%, 56% 35%, 56% 55%, 51% 58%, 44% 55%, 44% 16%, 46% 13%, 50% 12%, 53% 12%, 56% 15%, 56% 35%, 68% 35%);
     position: absolute;
-    top: 10%;
-    left: 38%;
+    top: 5%;
+    left: 5%;
     transition: background-color 0.3s;
 }
-
 /* estilos para aplicar animación a las agujas*/
 .animar-horas{
     animation: hours-turn 86400s infinite linear;
