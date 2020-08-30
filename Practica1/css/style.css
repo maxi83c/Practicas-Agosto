@@ -20,8 +20,8 @@ body{
 
 /* Estilos estructura del reloj*/
 .container{
-    width: 650px;
-    height: 650px;
+    width: 70vh;
+    height: 70vh;
     padding: 10px;
     clip-path: circle(50%);
     border: 40px  var(--fluorescent-green);
