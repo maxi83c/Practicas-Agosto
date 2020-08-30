@@ -1,0 +1,364 @@
+body{
+    user-select: none;
+    background-color: #222222;
+}
+
+/*Estilos para contenedor y manos*/ 
+.titulo{
+    color: white;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 30px;
+    margin: 10px 0px 0px;
+    font-weight: bold;
+    font-stretch: 3px;
+}
+.azul{
+    text-shadow: blue 2px 2px 4px, blue -2px -2px 4px;
+}
+.rojo{
+    text-shadow: red 2px 2px 4px, red -2px -2px 4px;
+}
+.contaimer-game{
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+}
+.manos{
+    display: flex;
+    position: relative;
+    background-image: linear-gradient(#222222 10%,#ffffff 50%, #ffffff 60%,#222222 90%);
+    margin: 15px 30px;
+    padding: 10% 3%;
+    height: 200px;
+    min-width: 500px;
+    justify-content: space-around;
+    border-radius: 8px;
+    box-shadow: red -1px -1px, blue 1px 1px, red -2px -2px, blue 2px 2px, red -3px -3px 4px, blue 3px 3px 4px, #9e4937 -8px -8px 8px , #1f4976 8px 8px 8px;
+}
+
+.score-izquierda, .score-derecha{
+    display: inline-block;
+    position: absolute;
+    font-size: 5rem;
+}
+.score-izquierda{
+    color:blue;
+    text-shadow: #1f4976 3px 3px 10px, #1f4976 -3px -3px 10px;
+    bottom: 3%;
+    right: 3%;
+}
+.score-derecha{
+    color: red;
+    text-shadow: #9e4937 3px 3px 10px, #9e4937 -3px -3px 10px;
+    left: 3%;
+    top: 3%;
+}
+.mano-izquierda,.mano-derecha{
+    height: 100%;
+    position: relative;
+}
+
+/*Estilos para botones*/
+
+.container-botones{
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    min-width: 500px;
+}
+
+.start{
+    text-decoration: none;
+    display: inline-block;
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    background-color: rgba(0, 0, 0, 0.705);
+    border-radius: 50%;
+    line-height: 10rem;
+    font-size: 5rem;
+    text-align: center;
+    justify-self: center;
+    top: 40%;
+}
+
+.start:before{
+    content:"";
+    display: block;
+    clip-path: polygon(35% 25%, 75% 50%, 35% 75% );
+    background-color: rgba(255,255,255,0.4);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: background-color 0.3s;
+}
+
+.start:hover:before{
+    background-color: rgba(255,255,255,0.7);
+}
+
+.start:active{
+    transform: scale(0.9);
+}
+
+[class^='boton']{
+    position:relative;
+    text-decoration: none;
+    font-size: 2rem;
+    display: inline-block;
+    border-radius: 20px;
+    width: 150px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    border: 3px solid #1f4976;
+    box-shadow: #1f4976 5px 5px 8px; 
+}
+
+.boton-piedra{
+    background-image:  radial-gradient(white 20%,#222222);
+}
+
+.boton-papel{
+    background-image: radial-gradient(white 20%,#222222);
+    margin-left: 30px;
+}
+
+.boton-tijera{
+    background-image: radial-gradient(white 20%,#222222);
+    margin-left: 30px;
+    margin-right: 30px; 
+}
+
+[class^='boton']::before{
+    content:"";
+    display: block;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    position: absolute;
+    transition: transform 0.8s
+}
+
+.boton-tijera::before{
+    background-image: url(../img/tijera-a.png);
+}
+
+.boton-tijera:hover::before{
+    transform: rotate(-10deg);
+}
+
+.boton-papel::before{
+    background-image: url(../img/papel-a.png);
+}
+
+.boton-papel:hover::before{
+    transform: rotate(-5deg);
+}
+
+.boton-piedra::before{
+    background-image: url(../img/piedra-a.png);
+    background-position: center -10px;
+}
+
+.boton-piedra:hover::before{
+    transform: rotate(-10deg);
+}
+
+.boton-config{
+    background-color:skyblue;
+    transition: transform 0.3s;
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+.boton-config::before{
+    width: 25px;
+    height: 25px;
+    background-color: darkslategray;
+    clip-path: polygon(19% 21%, 31% 25%, 38% 21%, 40% 8%, 60% 9%, 62% 21%, 69% 25%, 81% 21%, 91% 38%, 81% 46%, 81% 55%, 64% 55%, 64% 48%, 62% 41%, 56% 37%, 46% 36%, 39% 40%, 36% 47%, 36% 52%, 37% 58%, 41% 62%, 44% 64%, 48% 65%, 55% 64%, 60% 61%, 63% 58%, 64% 55%, 81% 55%, 91% 62%, 80% 79%, 69% 75%, 62% 79%, 59% 91%, 40% 91%, 38% 79%, 31% 75%, 19% 79%, 10% 62%, 19% 54%, 19% 46%, 9% 38%);
+}
+
+.boton-config:hover::before{
+    transform: rotate(360deg);
+}
+
+
+[class^='boton']:active{
+    transform: scale(0.9);
+    box-shadow: none;
+}
+
+/* Estilos para popups (formulario y mensaje) */
+
+
+.container-form, .container-mensaje{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+}
+.formulario label, .popup-mensaje p{
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+.formulario, .popup-mensaje{
+    position: absolute;
+    bottom: 50%;
+    font-size: 18px;
+    padding: 20px 40px;
+    background-image: radial-gradient(white 20%,skyblue);
+    box-shadow: red -1px -1px, blue 1px 1px, red -2px -2px, blue 2px 2px, red -3px -3px 4px, blue 3px 3px 4px, #9e4937 -8px -8px 8px , #1f4976 8px 8px 8px;
+}
+.formulario select{
+    margin-left: 30px;
+}
+
+.form-botones, .popup-mensaje, .formulario{
+    display: flex;
+}
+
+.popup-mensaje, .formulario{
+    flex-direction: column;
+}
+.form-botones [class^='config'], .popup-mensaje .config-cancel{
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 8px;
+    margin: 20px 10px;
+    text-align: center;
+    box-shadow: #1f4976 5px 5px 8px; 
+    max-width: 90px;
+}
+
+.form-botones [class^='config']:active, .popup-mensaje a.config-cancel:active{
+    transform: scale(0.9);
+    box-shadow: none;
+}
+.config-ok{
+    background-image: linear-gradient(red, darkred, red);
+}
+
+.config-cancel{
+    background-image: linear-gradient(blue, darkblue, blue);
+}
+
+.popup-mensaje .config-cancel{
+    margin: 10px auto;
+}
+
+.invisible{
+    display:none;
+}
+
+/* Clases para animaciones */
+
+.wait-red{
+    animation: timer-red 1s 3 linear;
+    transform-origin: center left;
+}
+
+.wait-blue{
+    animation: timer-blue 1s 3 linear;
+    transform-origin: center right;
+}
+
+.lose{
+    animation: lose 1s 1;
+    animation-fill-mode: forwards;
+}
+
+.not-chose{
+    animation: not-chose 1s 1;
+    animation-fill-mode: forwards;
+}
+
+.win{
+    animation: win 1s 1;
+    animation-fill-mode: forwards;
+}
+
+.piedra-azul{
+    content: url(img/piedra-a.png);
+}
+
+.piedra-roja{
+    content: url(img/piedra-r.png);
+}
+
+.papel-azul{
+    content: url(img/papel-a.png);
+}
+
+.papel-roja{
+    content: url(img/papel-r.png);
+}
+.tijera-azul{
+    content: url(img/tijera-a.png);
+}
+
+.tijera-roja{
+    content: url(img/tijera-r.png);
+}
+
+
+@keyframes win{
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+@keyframes lose{
+    100% {
+        transform: scale(0.8);
+        filter: grayscale(1);
+    }
+}
+
+@keyframes not-chose{
+    100% {
+        transform: scale(0);
+        filter: grayscale(1);
+    }
+}
+
+@keyframes timer-red{
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-60deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes timer-blue{
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(60deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Práctica 2 - Piedra, Papel o Tijera</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container-game" id="container-game">
+            <a href="#" class="boton-config"></a>
+            <h1 class="titulo"><spam class="rojo"> Piedra, Pa</spam><spam class="azul">pel o Tijera</spam></h1>
+            <div class="manos">
+                <div class="score-izquierda" id="score-blue">0</div>
+                <div class="score-derecha" id="score-red">0</div>
+                <img src="img/piedra-r.png" class="mano-izquierda" id="mano-roja" alt="Mano PC">
+                <img src="img/piedra-a.png" class="mano-derecha" id="mano-azul" alt="Mano Jugador">
+                <a href="#" class="start" id="boton-start"></a>
+            </div>
+            <div class="container-botones" >
+                <a href="#" class="boton-piedra invisible" id="piedra"></a>
+                <a href="#" class="boton-papel invisible" id="papel"></a>
+                <a href="#" class="boton-tijera invisible" id="tijera"></a>
+            </div>
+            <div class="container-form invisible" id="container-form">
+                <form class="formulario"> 
+                    <label for="intentos">Modo de juego</label>
+                    <select name="intentos" id="intentos">
+                        <option value="0">Sin límite de partidas</option>
+                        <option value="1">1 partida</option>
+                        <option value="2">mejor de 2</option>
+                        <option value="3" selected>mejor de 3</option>
+                        <option value="4">mejor de 4</option>
+                        <option value="5">mejor de 5</option>
+                    </select>
+                    <div class="form-botones">
+                        <a href="#" class="config-ok" id="boton-ok">Aceptar</a>
+                        <a href="#" class="config-cancel" id="boton-cancel">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+            <div class="container-mensaje invisible" id="container-mensaje">
+            <div class="popup-mensaje">
+                <p id="mensaje"></p>
+                <a href="#" class="config-cancel" id="boton-cerrar">Cerrar</a>
+            </div>
+            </div>
+        </div>
+        <script src="src/script.js"></script>
+    </body>    
+</html>
