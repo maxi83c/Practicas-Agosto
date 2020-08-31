@@ -259,7 +259,6 @@ const startGame = () =>{
 // verifica en que botón se hizo clic
 gameContainer.addEventListener('click', e =>{
     e.preventDefault()
-    console.log(e.target.className)
     switch (e.target.className){
         case 'verde': 
                 clickButton(0)
