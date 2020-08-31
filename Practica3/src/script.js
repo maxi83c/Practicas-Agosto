@@ -2,13 +2,13 @@ const styles = document.documentElement.style
 const difficulty = document.getElementById('dificultad')
 const playerInput = document.getElementById('jugador')
 const gameContainer = document.getElementById('game-container')
-const greenBottom = document.getElementById('boton-verde')
-const redBottom = document.getElementById('boton-rojo')
-const yellowBottom = document.getElementById('boton-amarillo')
-const blueBottom = document.getElementById('boton-azul')
-const playBottom = document.getElementById('boton-power')
+const greenButton = document.getElementById('boton-verde')
+const redButton = document.getElementById('boton-rojo')
+const yellowButton = document.getElementById('boton-amarillo')
+const blueButton = document.getElementById('boton-azul')
+const playButton = document.getElementById('boton-power')
 const center = document.getElementById('desactivar-centro')
-const gameBottoms = document.getElementById('desactivar-botones')
+const gameButtons = document.getElementById('desactivar-botones')
 const popup = document.getElementById('popup-container')
 const config = document.getElementById('formulario-config')
 const scores = document.getElementById('puntajes-container')
@@ -18,6 +18,9 @@ const playerNameLabel = document.getElementById('jugador-actual')
 const scorePlayerName = document.getElementById('nombre-jugador-puntaje-actual')
 const scorePlayerSecuences = document.getElementById('secuencias-puntaje-actual')
 const scoreTableTitle = document.getElementById('titulo-posiciones')
+const scoreTableList = document.getElementById('lista-puntajes')
+const cancelButton = document.getElementById('boton-cancelar')
+
 
 let playerSec = []
 let gameSec = []
@@ -29,40 +32,81 @@ actual.textContent = `Secuencias: ${score}`
 
 let playerName = ''
 let contiueExec = true
+let storagesScores = null
+let playerScoreIndex = -1
 
+// sonidos
+const soundOk = new Audio('sounds/ok.mp3')
+const soundfail = new Audio('sounds/fail.mp3')
+
+ // evito que se borre el contenido del formulario al presionar enter
+config.addEventListener('submit',e => {
+        e.preventDefault()
+}) 
+
+// devuelve el índice de la lista correspondiente al Jugador
+const getPlayerIndex = () =>{
+        for (let i = 0; i < storagesScores.length; i++){
+                if (storagesScores[i].name === playerName )
+                    return i
+        }
+        storagesScores.push({'name': playerName, 'score': score})
+        return storagesScores.length -1
+}
 
 //resetea las varibles a la configuración inicial
 const resetGame = () => {
         contiueExec = false
         if (lose){
                 config.reset()
-                playerNameLabel.classList.add('invisible')
         }
-        gameBottoms.classList.remove('invisible')
+        gameButtons.classList.remove('invisible')
         center.classList.add('invisible')
-        playBottom.classList.remove('sequence-fail')
-        playBottom.classList.remove('sequence-ok')
-        playBottom.classList.remove('animate-power-play')
+        playButton.classList.remove('sequence-fail')
+        playButton.classList.remove('sequence-ok')
+        playButton.classList.remove('animate-power-play')
         playerSec = []
         gameSec = []
         score = 0
-        lose = false
         playerName = ''
         styles.setProperty('dificultad', difficulty.options[difficulty.selectedIndex].value) // asigna a la variable CSS la velocidad de animación
         dificultTyme = parseInt(parseFloat(difficulty.options[difficulty.selectedIndex].value.replace(/s/g,"")) * 1000) //convierte el string de tiempo de animación a milisegundos (1s => 1000)
         actual.textContent = `Secuencias: ${score}`
-        playerName =  playerInput.value.trim()
-        playerNameLabel.textContent = playerName
+        playerName =  playerInput.value.trim().toUpperCase()
+        playerNameLabel.textContent = `Nombre: ${playerName}`
         selectedDifficulty.textContent = `Dificualtad: ${difficulty.options[difficulty.selectedIndex].textContent}`
         scorePlayerName.textContent = playerName
         scorePlayerSecuences.textContent = score
         scoreTableTitle.textContent  = `Tabla de posiciones (nivel ${difficulty.options[difficulty.selectedIndex].textContent})`
-
+        // busca la lista de puntajes por nivel de dificultad, si no existe el usuario lo crea        
+        storagesScores = JSON.parse(localStorage.getItem(`Puntajes - ${difficulty.options[difficulty.selectedIndex].textContent})`))
+        if (!storagesScores){
+                storagesScores= [ 
+                        {
+                                'name': playerName,
+                                'score': score
+                        }
+                ]
+                playerScoreIndex = 0
+                localStorage.setItem(`Puntajes - ${difficulty.options[difficulty.selectedIndex].textContent})`, JSON.stringify(storagesScores))
+        }
+        else 
+                playerScoreIndex = getPlayerIndex()
+        setScoreList()
         hidePopup()
+        if (lose){ // si perdio muestra de nuevo la configuración
+                lose = false
+                playerNameLabel.classList.add('invisible')
+                cancelButton.classList.add('invisible')
+                showConfig()
+        }    
 }
 
+
+// esconde la configuración y los puntajes
 const hidePopup = () => {
         if (playerName != ''){
+                cancelButton.classList.remove   ('invisible')
                 playerNameLabel.classList.remove('invisible')
                 popup.classList.add('invisible')
                 scores.classList.add('invisible')
@@ -72,19 +116,60 @@ const hidePopup = () => {
         }
 }
 
+// muestra los puntajes
 const showScores = () => {
         popup.classList.remove('invisible')
         scores.classList.remove('invisible')
         config.classList.add('invisible')
 }
 
+// muestra la configuración
 const showConfig = () => {
         popup.classList.remove('invisible')
         scores.classList.add('invisible')
         config.classList.remove('invisible')
 }
 
-const clickBottom = (color) =>{
+
+// actualizar grabar puntajes en local storage
+
+const saveScore = () => {
+        if (score > storagesScores[playerScoreIndex].score) {
+                storagesScores[playerScoreIndex].score = score
+                storagesScores.sort((a , b) => { // ordena por puntaje descendente, si coinciden los puntajes ordena por nombre
+                        if (a.score < b.score)
+                                return 1
+                        if (a.score > b.score)
+                                return -1
+                        if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase())
+                                return -1
+                        if (a.name > b.name)
+                                return 1
+                        return 0                        
+                })
+                playerScoreIndex = getPlayerIndex()
+                localStorage.setItem(`Puntajes - ${difficulty.options[difficulty.selectedIndex].textContent})`, JSON.stringify(storagesScores))
+                setScoreList()
+        }
+}
+
+
+const setScoreList = () =>{
+        let listScoreHTML = ""
+        for (let i = 0; i < storagesScores.length; i++){
+                if (i != playerScoreIndex)
+                        listScoreHTML= `${listScoreHTML}<div>${storagesScores[i].name}</div><div class="text-end">${storagesScores[i].score}</div>`  
+                else
+                        listScoreHTML= `${listScoreHTML}<div  class="puntaje-actual">${storagesScores[i].name}</div><div class="text-end puntaje-actual">${storagesScores[i].score}</div>`
+        }
+        scoreTableList.innerHTML = listScoreHTML
+}
+
+
+
+
+// funcion para cargar el click del usuario en uno de los botones de color
+const clickButton = (color) =>{
     playerSec.push(color)
     for (let i = 0; i < playerSec.length; i++){
         if (playerSec[i] != gameSec[i] ){
@@ -93,72 +178,80 @@ const clickBottom = (color) =>{
         }
     }
     if(!lose) {
-        if (playerSec.length === gameSec.length){
-                playBottom.classList.add('animate-power-play')
+        if (playerSec.length === gameSec.length){ // si termina la secuencia suma el punjate y reporduce la animación
+                soundOk.play()
+                playButton.classList.add('animate-power-play')
                 score++
-                //grabar score
+                saveScore()
+                setScoreList()
                 actual.textContent = `Secuencias: ${score}`
                 scorePlayerSecuences.textContent = score
                 setTimeout(() => {
-                        if (!contiueExec)
+                        if (!contiueExec) //agrego este condicional para evitar que se ejecute el código al vencer el timer si se reinicio el juego
                                 return
-                playBottom.classList.remove('animate-power-play')
-                playBottom.classList.remove('sequence-ok')
+                playButton.classList.remove('animate-power-play')
+                playButton.classList.remove('sequence-ok')
                 center.classList.add('invisible')
-                gameBottoms.classList.remove('invisible')
+                gameButtons.classList.remove('invisible')
                 }, 1000)
-                
         }
-    } else {
-                playBottom.classList.remove('sequence-ok')
+    } else { // si pierde muestra animacion y luego los puntajes
+                soundfail.play()
+                playButton.classList.remove('sequence-ok')
                 center.classList.remove('invisible')
-                gameBottoms.classList.remove('invisible')
-                playBottom.classList.add('sequence-fail')
-                setTimeout(() => {showScores()}, 1000)
+                gameButtons.classList.remove('invisible')
+                playButton.classList.add('sequence-fail')
+                setTimeout(() => {
+                        if (!contiueExec) //agrego este condicional para evitar que se ejecute el código al vencer el timer si se reinicio el juego
+                                return
+                        showScores()}, 1000)
                 
     }
 }
 
+// funcion recursiva para ir reproduciendo cada secuencia según la velocidad de la dificultad
 const playSequence = (index) => {
     contiueExec = true
+    
     if (index < gameSec.length){
-        switch (gameSec[index]){
+        switch (gameSec[index]){ // determina que color animar
                 case 0:
-                        greenBottom.classList.add('animate-green')
+                        greenButton.classList.add('animate-green')
                         break
                 case 1:
-                        redBottom.classList.add('animate-red')
+                        redButton.classList.add('animate-red')
                         break
                 case 2:
-                        yellowBottom.classList.add('animate-yellow')
+                        yellowButton.classList.add('animate-yellow')
                         break
                 case 3:
-                        blueBottom.classList.add('animate-blue')
+                        blueButton.classList.add('animate-blue')
         }
         setTimeout(() => {
-                if (!contiueExec)
+                if (!contiueExec) //agrego este condicional para evitar que se ejecute el código al vencer el timer si se reinicio el juego
                         return
-                greenBottom.classList.remove('animate-green')
-                redBottom.classList.remove('animate-red')
-                yellowBottom.classList.remove('animate-yellow')
-                blueBottom.classList.remove('animate-blue')
+                greenButton.classList.remove('animate-green')
+                redButton.classList.remove('animate-red')
+                yellowButton.classList.remove('animate-yellow')
+                blueButton.classList.remove('animate-blue')
                 setTimeout(() => {
-                        if (!contiueExec)
+                        if (!contiueExec) //agrego este condicional para evitar que se ejecute el código al vencer el timer si se reinicio el juego
                                 return
                         playSequence(++index)
                 }, 10)
         }, dificultTyme)
     } else {
-        playBottom.classList.add('sequence-ok')
+        soundOk.play()
+        playButton.classList.add('sequence-ok')
         center.classList.remove('invisible')
-        gameBottoms.classList.add('invisible')
+        gameButtons.classList.add('invisible')
         playerSec = []
     }
 }
 
 const startGame = () =>{
         center.classList.add('invisible')
-        gameSec.push(Math.floor(Math.random() * 4))
+        gameSec.push(Math.floor(Math.random() * 4)) // elige un número al azar entre 0 y 3 (0: verde, 1: rojo, 2: amarillo y 3:azul)
         center.classList.remove('invisible')
         playSequence(0)       
 }
@@ -169,16 +262,16 @@ gameContainer.addEventListener('click', e =>{
     console.log(e.target.className)
     switch (e.target.className){
         case 'verde': 
-                clickBottom(0)
+                clickButton(0)
                 break    
         case 'rojo': 
-                clickBottom(1)
+                clickButton(1)
                 break  
         case 'amarillo': 
-                clickBottom(2)
+                clickButton(2)
                 break    
         case 'azul': 
-                clickBottom(3)
+                clickButton(3)
                 break  
         case 'boton-power':
                 startGame()
@@ -188,7 +281,7 @@ gameContainer.addEventListener('click', e =>{
                 break
         case 'boton-config':
                 showConfig()
-                break
+                break               
         case 'boton-aceptar':
                 resetGame()
                 break
