@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Práctica 3 - Simón dice</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="game-container" id="game-container">
+            <div class="simon-border">
+                <div class="simon-container">
+                    <a href="#" class="verde" id="boton-verde"></a>
+                    <a href="#" class="rojo" id="boton-rojo"></a>
+                    <a href="#" class="amarillo" id="boton-amarillo"></a>
+                    <a href="#" class="azul" id="boton-azul"></a>
+                    <div class="desactivar-botones" id="desactivar-botones"></div>
+                    <div class="centro">
+                        <div class="border-power">
+                            <a href="#" class="boton-power" id="boton-power"></a>
+                        </div>
+                        <div class="desactivar-centro invisible" id="desactivar-centro"></div>
+                    </div>
+                </div>
+            </div>
+            <p id="dificultad-seleciconada" class="dificultad-seleciconada"></p>
+            <p id="actual" class="actual"></p>
+            <p id="jugador-actual" class="jugador-actual invisible"></p>
+            <a href="#" class="boton-puntajes"></a>
+            <a href="#" class="boton-config"></a>
+            <div class="popup-container" id="popup-container">
+                <form class="formulario-config" id="formulario-config">
+                    <input type="text" id="jugador" placeholder="Nombre del jugador" required maxlength="30">
+                    <label for="dificultad">Dificultad</label>
+                    <select name="dificultad" id="dificultad">
+                        <option value="2s">muy fácil</option>
+                        <option value="1.5s">fácil</option>
+                        <option value="1s" selected>normal</option>
+                        <option value="0.6s">difícil</option>
+                        <option value="0.3">muy difícil</option>
+                    </select>
+                    <div>
+                        <a href="#" class="boton-aceptar">Aceptar</a>
+                        <a href="#" class="boton-cancelar">Cancelar</a>
+                    </div>
+                </form>
+                <div class="puntajes-container invisible" id="puntajes-container">
+                    <p id="titulo-posiciones"></p>
+                    <div class="tabla-puntaje-actual" id="puntajes">
+                        <div class="titulos puntaje-actual">Jugador Actual</div><div class="text-end titulos puntaje-actual">Secuencias</div>
+                        <div class="puntaje-actual" id="nombre-jugador-puntaje-actual"></div><div class="text-end puntaje-actual" id="secuencias-puntaje-actual"></div>
+                        <div class="titulos">Nombre del Jugador</div><div class="text-end titulos">Secuencias</div>
+                    </div>
+                    <div class="tabla-puntajes" id="puntajes">
+                        <div>Nombre</div><div class="text-end">25</div> 
+                        <div class="puntaje-actual">Yo</div><div class="text-end puntaje-actual">20</div> 
+                    </div>
+                    <a href="#" class="boton-cerrar">X</a>
+                </div>
+            </div>
+        </div>
+        <script src="src/script.js"></script>
+    </body>    
+</html>
