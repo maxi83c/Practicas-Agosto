@@ -1,7 +1,7 @@
 const styles = document.documentElement.style
-const agujaHora = document.getElementById('aguja-h')
-const agujaMinuto = document.getElementById('aguja-m')
-const agujaSegundo = document.getElementById('aguja-s')
+const needleHour = document.getElementById('needle-hour')
+const needleMinute = document.getElementById('needle-minute')
+const needleSecond = document.getElementById('needle-second')
 const power = document.getElementById('power')
 
 // cambiar de tema al precionar el boton de power
@@ -38,12 +38,12 @@ window.addEventListener('load', () =>{
     const seccondsDegs = -90 + secconds * 6 // el angulo del segundero varía 6º por segungo
 
     // rotar las agujas a su ángulo correspondiente
-    styles.setProperty('--horas-deg', `${hoursDegs}deg`);
-    styles.setProperty('--minutos-deg',`${minutesDegs}deg`);
-    styles.setProperty('--segundos-deg',`${seccondsDegs}deg`);
+    styles.setProperty('--hours-deg', `${hoursDegs}deg`);
+    styles.setProperty('--minutes-deg',`${minutesDegs}deg`);
+    styles.setProperty('--seconds-deg',`${seccondsDegs}deg`);
     // comenzar animaciones
-    agujaHora.classList.add('animar-horas')
-    agujaMinuto.classList.add('animar-minutos')
-    agujaSegundo.classList.add('animar-segundos')
+    needleHour.classList.add('animate__hours')
+    needleMinute.classList.add('animate__minutes')
+    needleSecond.classList.add('animate__seconds')
 })
 
