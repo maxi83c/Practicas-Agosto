@@ -1,13 +1,14 @@
 :root{
-    --horas-deg: -90deg;
-    --minutos-deg: -90deg;
-    --segundos-deg: -90deg;
+    --hours-deg: -90deg;
+    --minutes-deg: -90deg;
+    --seconds-deg: -90deg;
     --bgc-border-clock: silver;
     --bgc-clock: white;
     --bdc-line: gray;
     --fluorescent-green: #d7fad7;
     --fluorescent-red: red;
     --wall: lightskyblue;
+    --size: min(1vh, 1vw);
 }
 
 body{
@@ -18,22 +19,26 @@ body{
     place-items: center;
 }
 
-/* Estilos estructura del reloj*/
+/* Estilos estructura del clock*/
 .container{
-    width: 70vh;
-    height: 70vh;
-    padding: 10px;
-    clip-path: circle(50%);
-    border: 40px  var(--fluorescent-green);
+    width: calc(70 * var(--size));
+    height: calc(70 * var(--size));
+    padding: calc(2* var(--size));;
+    border-radius: 50%;
+    border: calc(7 * var(--size)) var(--fluorescent-green);
     border-style: double dashed; 
     background-color:  var(--bgc-border-clock);
     transition: background-color 0.3s border-color 0.3s;
+    box-shadow: #222222 calc(2 * var(--size)) calc(2 * var(--size))  calc(8 * var(--size)),
+                #222222 calc(-2 * var(--size)) calc(-2 * var(--size))  calc(8 * var(--size));
 }
 
-.reloj{
+.clock{
     width: 100%;
     height: 100%;
-    clip-path: circle(50%);
+    box-shadow: #222222 inset calc(0.8 * var(--size)) calc(0.8 * var(--size))  calc(4 * var(--size)),
+                #222222 inset calc(-0.8 * var(--size)) calc(-0.8 * var(--size))  calc(4 * var(--size));
+    border-radius: 50%;
     background-color: var(--bgc-clock);
     display: flex;
     position: relative;
@@ -42,115 +47,115 @@ body{
 
 /* Estilos para líneas y números*/
 
-div[class^='linea']{
+div[class^='line']{
     width: 98%;
     height: 1%;
     background-color: var(--fluorescent-green);
-    border-radius: 1rem;
-    border: 2px solid var(--bdc-line);
+    border-radius: var(--size);
+    border: calc(0.25 * var(--size)) solid var(--bdc-line);
     align-self: center;
     margin-left: 1%;
     position: absolute;
     transition: background-color 0.3s border-color 0.3s;
 }
-.linea-2{
+.line__2{
     transform: rotate(30deg);
 }
-.linea-3{
+.line__3{
     transform: rotate(60deg);
 }
-.linea-4{
+.line__4{
     transform: rotate(90deg);
 }
-.linea-5{
+.line__5{
     transform: rotate(120deg);
 }
-.linea-6{
+.line__6{
     transform: rotate(150deg);
 }
 
-div[class^='segundo-linea']{
+div[class^='second__line']{
     width: 98%;
-    height: 0.2rem;
+    height: calc(0.5 * var(--size));
     background-color: #222222;
-    border-radius: 1rem;
+    border-radius:var(--size);
     align-self: center;
     margin-left: 1%;
     position: absolute;
 }
-.segundo-linea-1{
+.second__line__1{
     transform: rotate(-84deg);
 }
-.segundo-linea-2{
+.second__line__2{
     transform: rotate(-78deg);
 }
-.segundo-linea-3{
+.second__line__3{
     transform: rotate(-72deg);
 }
-.segundo-linea-4{
+.second__line__4{
     transform: rotate(-66deg);
 }
-.segundo-linea-5{
+.second__line__5{
     transform: rotate(-54deg);
 }
-.segundo-linea-6{
+.second__line__6{
     transform: rotate(-48deg);
 }
-.segundo-linea-7{
+.second__line__7{
     transform: rotate(-42deg);
 }
-.segundo-linea-8{
+.second__line__8{
     transform: rotate(-36deg);
 }
-.segundo-linea-9{
+.second__line__9{
     transform: rotate(-24deg);
 }
-.segundo-linea-10{
+.second__line__10{
     transform: rotate(-18deg);
 }
-.segundo-linea-11{
+.second__line__11{
     transform: rotate(-12deg);
 }
-.segundo-linea-12{
+.second__line__12{
     transform: rotate(-6deg);
 }
-.segundo-linea-13{
+.second__line__13{
     transform: rotate(6deg);
 }
-.segundo-linea-14{
+.second__line__14{
     transform: rotate(12deg);
 }
-.segundo-linea-15{
+.second__line__15{
     transform: rotate(18deg);
 }
-.segundo-linea-16{
+.second__line__16{
     transform: rotate(24deg);
 }
-.segundo-linea-17{
+.second__line__17{
     transform: rotate(36deg);
 }
-.segundo-linea-18{
+.second__line__18{
     transform: rotate(42deg);
 }
-.segundo-linea-19{
+.second__line__19{
     transform: rotate(48deg);
 }
-.segundo-linea-20{
+.second__line__20{
     transform: rotate(54deg);
 }
-.segundo-linea-21{
+.second__line__21{
     transform: rotate(66deg);
 }
-.segundo-linea-22{
+.second__line__22{
     transform: rotate(72deg);
 }
-.segundo-linea-23{
+.second__line__23{
     transform: rotate(78deg);
 }
-.segundo-linea-24{
+.second__line__24{
     transform: rotate(84deg);
 }
-.reloj-bg{
+.clock__bg{
     width: 85%;
     height: 85%;
     clip-path: circle(50%);
@@ -159,110 +164,109 @@ div[class^='segundo-linea']{
     margin: auto;
     transition: background-color 0.3s;
 } 
-div[class^='nro']{
+div[class^='number']{
     display: inline-block;
     position: absolute;
-    font-size: 3rem;
-    text-shadow: 2px 0 0 #222222, -2px 0 0 #222222, 0 2px 0 #222222, 0 -2px 0 #222222, 1px 1px #222222, -1px -1px 0 #222222, 1px -1px 0 #222222, -1px 1px 0 #222222;
+    font-size: calc(6 * var(--size));
+    text-shadow: calc(0.2 * var(--size)) 0 0 #222222, calc(-0.2 * var(--size)) 0 0 #222222, 0 calc(0.2 * var(--size)) 0 #222222, 0 calc(-0.2 * var(--size)) 0 #222222,
+                 calc(0.15 * var(--size)) 0 0 #222222, calc(-0.15 * var(--size)) 0 0 #222222, 0 calc(0.15 * var(--size)) 0 #222222, 0 calc(-0.15 * var(--size)) 0 #222222,
+                 calc(0.1 * var(--size)) 0 0 #222222, calc(-0.1 * var(--size)) 0 0 #222222, 0 calc(0.1 * var(--size)) 0 #222222, 0 calc(-0.1 * var(--size)) 0 #222222;
     color: var(--fluorescent-green);
     transition: color 0.3s;
 
 }
-.nro-1{
+.number__1{
     margin-top: 15%;
     margin-left: 65%;
 }
-.nro-2{
+.number__2{
     margin-top: 26%;
     margin-left: 78%;
 }
-.nro-3{
+.number__3{
     margin-top: 45%;
     margin-left: 85%;
 }
 
-.nro-4{
+.number__4{
     margin-top: 63%;
     margin-left: 78%;
 }
-.nro-5{
+.number__5{
     margin-top: 75%;
     margin-left: 65%;
 }
-.nro-6{
+.number__6{
     margin-top: 80%;
     margin-left: 47%;
 }
-.nro-7{
+.number__7{
     margin-top: 75%;
     margin-left: 30%;
 }
-.nro-8{
+.number__8{
     margin-top: 63%;
     margin-left: 18%;
 }
-.nro-9{
+.number__9{
     margin-top: 45%;
     margin-left: 12%;
 }
-.nro-10{
+.number__10{
     margin-top: 26%;
     margin-left: 15%;
 }
-.nro-11{
+.number__11{
     margin-top: 15%;
     margin-left: 27%;
 }
-.nro-12{
+.number__12{
     margin-top: 10%;
     margin-left: 45%;
 }
 
 /* estilo para las agujas */
-.hora{
+.hour, .minute, .second{
+    position: absolute;
+    align-self: center;
+    box-shadow: #222222 calc(0.2 * var(--size)) calc(0.2 * var(--size))  calc(1.5 * var(--size));
+    margin-left: 49%;
+    transform-origin: center left;
+    transition: background-color 0.3s;
+}
+
+.hour, .minute{
+    background-color: var(--fluorescent-green);
+    border: calc(0.4 * var(--size)) solid #222222;
+    
+}
+
+.hour{
     width: 30%;
     height: 5%;
-    background-color: var(--fluorescent-green);
-    border: 3px solid #222222;
-    align-self: center;
-    margin-left: 49%;
-    border-radius: 2rem 90% 90% 2rem;
-    position: absolute;
-    transform-origin: center left;
-    transition: background-color 0.3s;
+    border-radius: calc(0.25 * var(--size)) 90% 90% calc(0.25 * var(--size));
 }
 
-.minuto{
+.minute{
     width: 40%;
     height: 3%;
-    background-color: var(--fluorescent-green);
-    border: 3px solid #222222;
-    align-self: center;
-    margin-left: 49%;
-    border-radius: 1rem 60% 60% 1rem;
-    position: absolute;
-    transform-origin: center left;
-    transition: background-color 0.3s;
+    border-radius: calc(0.25 * var(--size)) 60% 60% calc(0.25 * var(--size));
 }
 
-.segundo{
+.second{
     width: 45%;
     height: 1%;
     background-color: var(--fluorescent-red);
-    align-self: center;
-    margin-left: 49%;
-    border-radius: 0.5rem 90% 90% 0.5rem;
-    position: absolute;
-    transform-origin: center left;
-    transition: background-color 0.3s;
+    border-radius: calc(0.2 * var(--size)) 90% 90% calc(0.2 * var(--size));
 }
 
 
 .center{
+    box-shadow: #222222 calc(0.2 * var(--size)) calc(0.2 * var(--size))  calc(1.5 * var(--size));
     width: 8%;
     height: 8%;
     display: flex;
-    clip-path: circle(50%);
+    border-radius: 50%;
     background-color: #222222;
     align-self: center;
     margin-left: 45%;
@@ -282,41 +286,41 @@ div[class^='nro']{
     transition: background-color 0.3s;
 }
 /* estilos para aplicar animación a las agujas*/
-.animar-horas{
+.animate__hours{
     animation: hours-turn 86400s infinite linear;
 }
 
-.animar-minutos{
+.animate__minutes{
     animation: minutes-turn 3600s infinite linear;
 }
 
-.animar-segundos{
+.animate__seconds{
     animation: seconds-turn 60s infinite linear;
 }
 
 @keyframes hours-turn{
     0% {
-        transform: rotate(var(--horas-deg));
+        transform: rotate(var(--hours-deg));
     }
     100% {
-        transform: rotate(calc(var(--horas-deg) + 360deg));
+        transform: rotate(calc(var(--hours-deg) + 360deg));
     }
 }
 
 @keyframes minutes-turn{
     0% {
-        transform: rotate(var(--minutos-deg));
+        transform: rotate(var(--minutes-deg));
     }
     100% {
-        transform: rotate(calc(var(--minutos-deg) + 360deg));
+        transform: rotate(calc(var(--minutes-deg) + 360deg));
     }
 }
 
 @keyframes seconds-turn{
     0% {
-        transform: rotate(var(--segundos-deg));
+        transform: rotate(var(--seconds-deg));
     }
     100% {
-        transform: rotate(calc(var(--segundos-deg) + 360deg));
+        transform: rotate(calc(var(--seconds-deg) + 360deg));
     }
 }
