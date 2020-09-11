@@ -26,7 +26,7 @@ body{
     padding: calc(2* var(--size));;
     border-radius: 50%;
     border: calc(7 * var(--size)) var(--fluorescent-green);
-    border-style: double dashed; 
+    border-style: double; 
     background-color:  var(--bgc-border-clock);
     transition: background-color 0.3s border-color 0.3s;
     box-shadow: #222222 calc(2 * var(--size)) calc(2 * var(--size))  calc(8 * var(--size)),
