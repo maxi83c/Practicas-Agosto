@@ -1,138 +1,143 @@
+:root{
+    --size: min(1vh, 1vw);
+    --timer: "";
+}
 body{
     user-select: none;
     background-color: #222222;
+    margin: 0;
 }
-
 /*Estilos para contenedor y manos*/ 
-.titulo{
+.title{
     color: white;
     text-align: center;
     font-family: sans-serif;
-    font-size: 30px;
-    margin: 10px 0px 0px;
+    font-size: calc(7 * var(--size));
+    margin: calc(5 * var(--size)) 0 0;
     font-weight: bold;
-    font-stretch: 3px;
+    font-stretch: var(--size);
 }
-.azul{
-    text-shadow: blue 2px 2px 4px, blue -2px -2px 4px;
+.title--blue{
+    text-shadow: blue calc(0.5 * var(--size)) calc(0.5 * var(--size)) var(--size), blue calc(-0.5 * var(--size)) calc(-0.5 * var(--size)) var(--size);
 }
-.rojo{
-    text-shadow: red 2px 2px 4px, red -2px -2px 4px;
+.title--red{
+    text-shadow: red  calc(0.5 * var(--size)) calc(0.5 * var(--size)) var(--size), red calc(-0.5 * var(--size)) calc(-0.5 * var(--size)) var(--size);
 }
-.contaimer-game{
+.container-game{
     display: flex;
     justify-items: center;
     flex-direction: column;
+    position: relative;
 }
-.manos{
+.hands{
     display: flex;
     position: relative;
     background-image: linear-gradient(#222222 10%,#ffffff 50%, #ffffff 60%,#222222 90%);
-    margin: 15px 30px;
-    padding: 10% 3%;
-    height: 200px;
-    min-width: 500px;
+    margin: calc(3 * var(--size)) calc(3 * var(--size));;
+    padding: calc(15 * var(--size)) calc(2 * var(--size));
+    height: calc(25 * var(--size));
     justify-content: space-around;
-    border-radius: 8px;
-    box-shadow: red -1px -1px, blue 1px 1px, red -2px -2px, blue 2px 2px, red -3px -3px 4px, blue 3px 3px 4px, #9e4937 -8px -8px 8px , #1f4976 8px 8px 8px;
+    border-radius: calc(2 * var(--size));
+    box-shadow: red calc(-0.2 * var(--size)) calc(-0.2 * var(--size)) , blue calc(0.2 * var(--size)) calc(0.2 * var(--size)) , red calc(-0.3 * var(--size))  calc(-0.3 * var(--size)) , blue calc(0.3 * var(--size)) calc(0.3 * var(--size)), red calc(-0.4 * var(--size)) calc(-0.4 * var(--size)) calc(0.5 * var(--size)), blue calc(0.4 * var(--size)) calc(0.4 * var(--size)) calc(0.5 * var(--size)), #9e4937 calc(-1 * var(--size)) calc(-1 * var(--size)) calc(1 * var(--size)) , #1f4976 calc(1 * var(--size)) calc(1 * var(--size)) calc(1 * var(--size));
 }
-
-.score-izquierda, .score-derecha{
+.score__left, .score__right{
     display: inline-block;
     position: absolute;
-    font-size: 5rem;
+    font-size:calc(10 * var(--size));
 }
-.score-izquierda{
+.score__left{
     color:blue;
-    text-shadow: #1f4976 3px 3px 10px, #1f4976 -3px -3px 10px;
+    text-shadow: #1f4976 calc(0.4 * var(--size)) calc(0.4 * var(--size)) calc(2.5 * var(--size)), #1f4976 calc(-0.4 * var(--size)) calc(-0.4 * var(--size)) calc(2.5 * var(--size));
     bottom: 3%;
     right: 3%;
 }
-.score-derecha{
+.score__right{
     color: red;
-    text-shadow: #9e4937 3px 3px 10px, #9e4937 -3px -3px 10px;
+    text-shadow: #9e4937 calc(0.4 * var(--size)) calc(0.4 * var(--size)) calc(2.5 * var(--size)), #9e4937 calc(-0.4 * var(--size)) calc(-0.4 * var(--size)) calc(2.5 * var(--size));
     left: 3%;
     top: 3%;
 }
-.mano-izquierda,.mano-derecha{
-    height: 100%;
+.hand__left, .hand__right{
+    height: calc(20 * var(--size)) ;
     position: relative;
 }
-
 /*Estilos para botones*/
-
-.container-botones{
+.game__buttons{
     justify-self: center;
     display: flex;
     justify-content: center;
-    min-width: 500px;
+    min-width: 10vh;
 }
-
 .start{
-    text-decoration: none;
     display: inline-block;
     position: absolute;
-    width: 10rem;
-    height: 10rem;
+    width: calc(20 * var(--size));
+    height: calc(20 * var(--size));
     background-color: rgba(0, 0, 0, 0.705);
     border-radius: 50%;
-    line-height: 10rem;
-    font-size: 5rem;
-    text-align: center;
-    justify-self: center;
-    top: 40%;
+    top: 35%;
 }
-
-.start:before{
+.start::before{
     content:"";
     display: block;
     clip-path: polygon(35% 25%, 75% 50%, 35% 75% );
     background-color: rgba(255,255,255,0.4);
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
     position: absolute;
     transition: background-color 0.3s;
 }
-
-.start:hover:before{
+.start:hover::before{
     background-color: rgba(255,255,255,0.7);
 }
-
 .start:active{
     transform: scale(0.9);
 }
+.timer{
+    position: absolute;
+    top: 35%;
+    width: calc(20 * var(--size));
+    height: calc(20 * var(--size));
+}
+.timer::before{
+    content: var(--timer);
+    position: absolute;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-stretch: var(--size);
+    font-size: calc(15 * var(--size));
+    top: 0;
+    left: 30%;
+    text-shadow: blue calc(0.8 * var(--size)) calc(0.8 * var(--size)) calc(2.5 * var(--size)), red calc(-0.8 * var(--size)) calc(-0.8 * var(--size)) calc(2.5 * var(--size));
+}
 
-[class^='boton']{
+[class^='buttom']{
     position:relative;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: calc(2 * var(--size));
     display: inline-block;
-    border-radius: 20px;
-    width: 150px;
-    height: 100px;
+    border-radius: calc(5 * var(--size));
+    width: calc(30 * var(--size));
+    height: calc(22 * var(--size));
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    border: 3px solid #1f4976;
+    border: calc(1.2 * var(--size))  solid #1f4976;
     box-shadow: #1f4976 5px 5px 8px; 
 }
-
-.boton-piedra{
+.buttom__rock, .buttom__paper, .buttom__scissors{
     background-image:  radial-gradient(white 20%,#222222);
 }
-
-.boton-papel{
-    background-image: radial-gradient(white 20%,#222222);
+.buttom__paper, .buttom__scissors{
     margin-left: 30px;
 }
-
-.boton-tijera{
-    background-image: radial-gradient(white 20%,#222222);
-    margin-left: 30px;
-    margin-right: 30px; 
+.buttom__scissors{
+    margin-left: 30px; 
 }
-
-[class^='boton']::before{
+[class^='buttom']::before{
     content:"";
     display: block;
     width: 100%;
@@ -143,201 +148,180 @@ body{
     background-size: contain;
     background-position: center center;
     position: absolute;
-    transition: transform 0.8s
+    transition: transform 0.8s;
 }
-
-.boton-tijera::before{
-    background-image: url(../img/tijera-a.png);
+[class^='buttom']:focus, .start:focus, .config__ok, .config__cancel, .popup__close{
+    outline: none;
 }
-
-.boton-tijera:hover::before{
+.buttom__scissors::before{
+    background-image: url(../img/scissors-blue.png);
+}
+.buttom__scissors:hover::before{
     transform: rotate(-10deg);
 }
-
-.boton-papel::before{
-    background-image: url(../img/papel-a.png);
+.buttom__paper::before{
+    background-image: url(../img/paper-blue.png);
 }
-
-.boton-papel:hover::before{
+.buttom__paper:hover::before{
     transform: rotate(-5deg);
 }
-
-.boton-piedra::before{
-    background-image: url(../img/piedra-a.png);
-    background-position: center -10px;
+.buttom__rock::before{
+    background-image: url(../img/rock-blue.png);
+    background-position: center calc(-2.5 * var(--size));
 }
-
-.boton-piedra:hover::before{
+.buttom__rock:hover::before{
     transform: rotate(-10deg);
 }
-
-.boton-config{
+.buttom__config, .buttom__help{
+    border: calc(0.8 * var(--size))  solid #1f4976;
     background-color:skyblue;
     transition: transform 0.3s;
     position: fixed;
-    top: 5px;
-    right: 5px;
-    width: 25px;
-    height: 25px;
+    top: calc(1.2 * var(--size));
+    right: calc(1.2 * var(--size));
+    width: calc(8 * var(--size));
+    height: calc(8 * var(--size));
 }
-
-.boton-config::before{
-    width: 25px;
-    height: 25px;
+.buttom__help{
+    left: calc(1.2 * var(--size));
+}
+.buttom__config::before{
     background-color: darkslategray;
     clip-path: polygon(19% 21%, 31% 25%, 38% 21%, 40% 8%, 60% 9%, 62% 21%, 69% 25%, 81% 21%, 91% 38%, 81% 46%, 81% 55%, 64% 55%, 64% 48%, 62% 41%, 56% 37%, 46% 36%, 39% 40%, 36% 47%, 36% 52%, 37% 58%, 41% 62%, 44% 64%, 48% 65%, 55% 64%, 60% 61%, 63% 58%, 64% 55%, 81% 55%, 91% 62%, 80% 79%, 69% 75%, 62% 79%, 59% 91%, 40% 91%, 38% 79%, 31% 75%, 19% 79%, 10% 62%, 19% 54%, 19% 46%, 9% 38%);
 }
-
-.boton-config:hover::before{
+.buttom__help::before{
+    color: darkslategray;
+    content: "?";
+    font-size: calc(5.5 * var(--size));
+    font-weight: bold;
+}
+.buttom__help:hover::before{
+    transform: rotate(-360deg);
+}
+.buttom__config:hover::before{
     transform: rotate(360deg);
 }
-
-
-[class^='boton']:active{
+[class^='buttom']:active{
     transform: scale(0.9);
     box-shadow: none;
 }
-
 /* Estilos para popups (formulario y mensaje) */
-
-
-.container-form, .container-mensaje{
+.container__config, .container__menssage, .container__rules{
     position: fixed;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
+    display: grid;
+    place-items: center;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
 }
-.formulario label, .popup-mensaje p{
+.config__label, .message, .config__select{
     font-family: sans-serif;
-    font-size: 18px;
+    font-size: calc(3 * var(--size));
     font-weight: bold;
 }
-.formulario, .popup-mensaje{
+.config__select{
+    margin-top: calc(2 * var(--size));
+}
+.form__config, .form__popup,.form__rules{
     position: absolute;
-    bottom: 50%;
-    font-size: 18px;
-    padding: 20px 40px;
+    font-size: calc(3 * var(--size));
+    padding: calc(2 * var(--size)) calc(4 * var(--size));
     background-image: radial-gradient(white 20%,skyblue);
-    box-shadow: red -1px -1px, blue 1px 1px, red -2px -2px, blue 2px 2px, red -3px -3px 4px, blue 3px 3px 4px, #9e4937 -8px -8px 8px , #1f4976 8px 8px 8px;
+    box-shadow: red calc(-0.25 * var(--size)) calc(-0.25 * var(--size)), blue calc(0.25 * var(--size)) calc(0.25 * var(--size)), red calc(-0.5 * var(--size)) calc(-0.5 * var(--size)), blue calc(0.5 * var(--size)) calc(0.5 * var(--size)), red calc(-0.75 * var(--size)) calc(-0.75 * var(--size)) var(--size), blue calc(0.75 * var(--size)) calc(0.75 * var(--size)) var(--size), #9e4937 calc(-2 * var(--size)) calc(-2 * var(--size)) calc(2 * var(--size)) , #1f4976 calc(2 * var(--size)) calc(2 * var(--size)) calc(2 * var(--size));
 }
-.formulario select{
-    margin-left: 30px;
-}
-
-.form-botones, .popup-mensaje, .formulario{
+.form__rules, .rules__details, .form__popup{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: calc(2 * var(--size)) ;
 }
-
-.popup-mensaje, .formulario{
+.form__rules, .form__popup{
     flex-direction: column;
 }
-.form-botones [class^='config'], .popup-mensaje .config-cancel{
+.rules{
+    height: calc(20 * var(--size));
+    margin-right: calc(2 * var(--size)) ;
+}
+.config__select{
+    margin-left: calc(7.5 * var(--size));
+}
+.config__buttons, .form__popup, .form__config{
+    display: flex;
+}
+.form__popup, .form__config{
+    flex-direction: column;
+}
+.config__ok, .config__cancel, .popup__close, .rules__close{
+    font-size: calc(3 * var(--size)) ;
     text-decoration: none;
     display: inline-block;
-    padding: 10px 20px;
+    padding: calc(2.5 * var(--size)) calc(2.5 * var(--size));
     color: white;
-    border-radius: 8px;
-    margin: 20px 10px;
+    border-radius: calc(2 * var(--size));
+    margin: calc(2.5 * var(--size)) calc(2.5 * var(--size));
     text-align: center;
-    box-shadow: #1f4976 5px 5px 8px; 
-    max-width: 90px;
+    box-shadow: #1f4976 calc(1.25 * var(--size)) calc(1.25 * var(--size)) calc(2 * var(--size)); 
+    max-width: calc(23 * var(--size));
 }
-
-.form-botones [class^='config']:active, .popup-mensaje a.config-cancel:active{
+.config__ok:active, .config__cancel:active, .popup__close:active, .rules__close:active{
     transform: scale(0.9);
     box-shadow: none;
 }
-.config-ok{
+.config__ok{
     background-image: linear-gradient(red, darkred, red);
 }
-
-.config-cancel{
+.config__cancel, .popup__close, .rules__close{
     background-image: linear-gradient(blue, darkblue, blue);
 }
-
-.popup-mensaje .config-cancel{
-    margin: 10px auto;
+.config__cancel{
+    margin: calc(2.25 * var(--size)) auto;
 }
-
 .invisible{
     display:none;
 }
-
 /* Clases para animaciones */
-
-.wait-red{
+.wait__red{
     animation: timer-red 1s 3 linear;
     transform-origin: center left;
 }
-
-.wait-blue{
+.wait__blue{
     animation: timer-blue 1s 3 linear;
     transform-origin: center right;
 }
-
+.countdown{
+    animation: timer-countdown 3s 1 linear;
+}
 .lose{
     animation: lose 1s 1;
     animation-fill-mode: forwards;
 }
-
-.not-chose{
+.not__chose{
     animation: not-chose 1s 1;
     animation-fill-mode: forwards;
 }
-
 .win{
     animation: win 1s 1;
     animation-fill-mode: forwards;
 }
-
-.piedra-azul{
-    content: url(img/piedra-a.png);
-}
-
-.piedra-roja{
-    content: url(img/piedra-r.png);
-}
-
-.papel-azul{
-    content: url(img/papel-a.png);
-}
-
-.papel-roja{
-    content: url(img/papel-r.png);
-}
-.tijera-azul{
-    content: url(img/tijera-a.png);
-}
-
-.tijera-roja{
-    content: url(img/tijera-r.png);
-}
-
-
 @keyframes win{
     100% {
         transform: scale(1.5);
     }
 }
-
 @keyframes lose{
     100% {
         transform: scale(0.8);
         filter: grayscale(1);
     }
 }
-
 @keyframes not-chose{
     100% {
         transform: scale(0);
         filter: grayscale(1);
     }
 }
-
 @keyframes timer-red{
     0% {
         transform: rotate(0deg);
@@ -349,7 +333,6 @@ body{
         transform: rotate(0deg);
     }
 }
-
 @keyframes timer-blue{
     0% {
         transform: rotate(0deg);
@@ -361,4 +344,30 @@ body{
         transform: rotate(0deg);
     }
 }
-
+@keyframes timer-countdown{
+    0%{
+        --timer:"3";
+        transform: scale(1);
+    }
+    16.66%{
+        transform: scale(0);
+    }
+    33.33%{
+        --timer:"2";
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0);
+    }
+    66.66%{
+        --timer:"1";
+        transform: scale(1);
+    }
+    83.33%{
+        transform: scale(0);
+    }
+    100%{
+        --timer:"0";
+        transform: scale(1);
+    }
+}
