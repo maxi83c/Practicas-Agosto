@@ -150,7 +150,7 @@ body{
     position: absolute;
     transition: transform 0.8s;
 }
-[class^='buttom']:focus, .start:focus, .config__ok, .config__cancel, .popup__close{
+[class^='buttom']:focus, .start:focus, .config__ok:focus, .config__cancel:focus, .popup__close:focus, .rules__close:focus{
     outline: none;
 }
 .buttom__scissors::before{
@@ -255,7 +255,6 @@ body{
 }
 .config__ok, .config__cancel, .popup__close, .rules__close{
     font-size: calc(3 * var(--size)) ;
-    text-decoration: none;
     display: inline-block;
     padding: calc(2.5 * var(--size)) calc(2.5 * var(--size));
     color: white;
@@ -264,6 +263,7 @@ body{
     text-align: center;
     box-shadow: #1f4976 calc(1.25 * var(--size)) calc(1.25 * var(--size)) calc(2 * var(--size)); 
     max-width: calc(23 * var(--size));
+    border: 0;
 }
 .config__ok:active, .config__cancel:active, .popup__close:active, .rules__close:active{
     transform: scale(0.9);
