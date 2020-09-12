@@ -6,25 +6,27 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <div class="container-game" id="container-game">
-            <a href="#" class="boton-config"></a>
-            <h1 class="titulo"><spam class="rojo"> Piedra, Pa</spam><spam class="azul">pel o Tijera</spam></h1>
-            <div class="manos">
-                <div class="score-izquierda" id="score-blue">0</div>
-                <div class="score-derecha" id="score-red">0</div>
-                <img src="img/piedra-r.png" class="mano-izquierda" id="mano-roja" alt="Mano PC">
-                <img src="img/piedra-a.png" class="mano-derecha" id="mano-azul" alt="Mano Jugador">
-                <a href="#" class="start" id="boton-start"></a>
+        <div class="container__game" id="container-game">
+            <button class="buttom__config"></button>
+            <button class="buttom__help"></button>
+            <h1 class="title"><span class="title--red"> Piedra, Pa</span><span class="title--blue">pel o Tijera</span></h1>
+            <div class="hands">
+                <div class="score__left" id="score-blue">0</div>
+                <div class="score__right" id="score-red">0</div>
+                <img src="img/rock-red.png" class="hand__left" id="hand-red" alt="Mano PC">
+                <img src="img/rock-blue.png" class="hand__right" id="hand-blue" alt="Mano Jugador">
+                <div class="timer invisible" id="timer"></div>
+                <button class="start" id="buttom-start"></button>
             </div>
-            <div class="container-botones" >
-                <a href="#" class="boton-piedra invisible" id="piedra"></a>
-                <a href="#" class="boton-papel invisible" id="papel"></a>
-                <a href="#" class="boton-tijera invisible" id="tijera"></a>
-            </div>
-            <div class="container-form invisible" id="container-form">
-                <form class="formulario"> 
-                    <label for="intentos">Modo de juego</label>
-                    <select name="intentos" id="intentos">
+            <form class="game__buttons" >
+                <button  class="buttom__rock invisible" id="rock"></button>
+                <button  class="buttom__paper invisible" id="paper"></button>
+                <button class="buttom__scissors invisible" id="scissors"></button>
+            </form>
+            <div class="container__config invisible" id="container-config">
+                <form class="form__config"> 
+                    <label for="attempts" class="config__label">Modo de juego</label>
+                    <select name="attempts" id="attempts" class="config__select">
                         <option value="0">Sin límite de partidas</option>
                         <option value="1">1 partida</option>
                         <option value="2">mejor de 2</option>
@@ -32,17 +34,30 @@
                         <option value="4">mejor de 4</option>
                         <option value="5">mejor de 5</option>
                     </select>
-                    <div class="form-botones">
-                        <a href="#" class="config-ok" id="boton-ok">Aceptar</a>
-                        <a href="#" class="config-cancel" id="boton-cancel">Cancelar</a>
+                    <div class="config__buttons"">
+                        <button class="config__ok" id="buttom-ok">Aceptar</button>
+                        <button class="config__cancel" id="buttom-cancel">Cancelar</button>
                     </div>
                 </form>
             </div>
-            <div class="container-mensaje invisible" id="container-mensaje">
-            <div class="popup-mensaje">
-                <p id="mensaje"></p>
-                <a href="#" class="config-cancel" id="boton-cerrar">Cerrar</a>
+            <div class="container__menssage invisible" id="container-menssage">
+                <form class="form__popup">
+                    <p id="menssage" class="message"></p>
+                    <buttom class="popup__close" id="buttom-close">Cerrar</button>
+                </form>
             </div>
+            <div class="container__rules invisible" id="container-rules">
+                <form class="form__rules">
+                    <div class="rules__details">
+                        <img src="img/rules.png" class="rules" alt="rules">
+                        <p class="message">
+                            <span class="title--red">Piedra</span>  vence a  <span class="title--blue">Tijera</span><br>
+                            <span class="title--red">Tijera</span>  vende a  <span class="title--blue">Papel</span><br>
+                            <span class="title--red">Papel</span></span>  vence a  <span class="title--blue">Piedra</span>
+                        </p>
+                    </div>
+                    <buttom class="rules__close">Cerrar</button>
+                </form>
             </div>
         </div>
         <script src="src/script.js"></script>
