@@ -2,62 +2,58 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Práctica 2 - Piedra, Papel o Tijera</title>
+        <title>Práctica 3 - Simón dice</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <div class="container__game" id="container-game">
+        <div class="game__container" id="game-container">
+            <div class="simon__border">
+                <div class="simon__container">
+                    <button class="green" id="button-green"></button>
+                    <button class="red" id="button-red"></button>
+                    <button class="yellow" id="button-yellow"></button>
+                    <button class="blue" id="button-blue"></button>
+                    <div class="disable__buttons" id="disable-buttons"></div>
+                    <div class="center">
+                        <div class="border__power">
+                            <button class="button__power" id="button-power"></button>
+                        </div>
+                        <div class="disable__center invisible" id="disable-center"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="selected__dificulty" id="selected-dificulty"></p>
+            <p class="current" id="current"></p>
+            <p class="current__player invisible"  id="current-player"></p>
+            <button class="button__scores"></button>
             <button class="button__config"></button>
-            <button class="button__help"></button>
-            <h1 class="title"><span class="title--red"> Piedra, Pa</span><span class="title--blue">pel o Tijera</span></h1>
-            <div class="hands">
-                <div class="score__left" id="score-blue">0</div>
-                <div class="score__right" id="score-red">0</div>
-                <img src="img/rock-red.png" class="hand__left" id="hand-red" alt="Mano PC">
-                <img src="img/rock-blue.png" class="hand__right" id="hand-blue" alt="Mano Jugador">
-                <div class="timer invisible" id="timer"></div>
-                <button class="start" id="button-start"></button>
-            </div>
-            <form class="game__buttons" >
-                <button  class="button__rock invisible" id="rock"></button>
-                <button  class="button__paper invisible" id="paper"></button>
-                <button class="button__scissors invisible" id="scissors"></button>
-            </form>
-            <div class="container__config invisible" id="container-config">
-                <form class="form__config"> 
-                    <label for="attempts" class="config__label">Modo de juego</label>
-                    <select name="attempts" id="attempts" class="config__select">
-                        <option value="0">Sin límite de partidas</option>
-                        <option value="1">1 partida</option>
-                        <option value="2">mejor de 2</option>
-                        <option value="3" selected>mejor de 3</option>
-                        <option value="4">mejor de 4</option>
-                        <option value="5">mejor de 5</option>
+            <div class="popup__container" id="popup-container">
+                <form class="form__config" id="form-config">
+                    <input type="text" class="config__input" id="player" placeholder="Nombre del jugador" required maxlength="30">
+                    <label for="dificulty" class="config_label">Dificultad</label>
+                    <select name="dificulty" id="dificulty">
+                        <option value="2s">muy fácil</option>
+                        <option value="1.5s">fácil</option>
+                        <option value="1s" selected>normal</option>
+                        <option value="0.6s">difícil</option>
+                        <option value="0.3">muy difícil</option>
                     </select>
-                    <div class="config__buttons"">
-                        <button class="config__ok" id="button-ok">Aceptar</button>
-                        <button class="config__cancel" id="button-cancel">Cancelar</button>
+                    <div class="config__div">
+                        <button class="button__ok">Aceptar</button>
+                        <button class="button__cancel invisible" id="button-cancel">Cancelar</button>
                     </div>
                 </form>
-            </div>
-            <div class="container__menssage invisible" id="container-menssage">
-                <form class="form__popup">
-                    <p id="menssage" class="message"></p>
-                    <button class="popup__close" id="button-close">Cerrar</button>
-                </form>
-            </div>
-            <div class="container__rules invisible" id="container-rules">
-                <form class="form__rules">
-                    <div class="rules__details">
-                        <img src="img/rules.png" class="rules" alt="rules">
-                        <p class="message">
-                            <span class="title--red">Piedra</span>  vence a  <span class="title--blue">Tijera</span><br>
-                            <span class="title--red">Tijera</span>  vende a  <span class="title--blue">Papel</span><br>
-                            <span class="title--red">Papel</span></span>  vence a  <span class="title--blue">Piedra</span>
-                        </p>
+                <div class="scores__container invisible" id="scores-container">
+                    <p class="scores__title" id="title-positions"></p>
+                    <div class="current__score-table" id="scores">
+                        <div class="score-table__div titles current__score">Jugador Actual</div><div class="score-table__div text-end titles current__score">Secuencias</div>
+                        <div class="score-table__div current__score" id="current-player-score"></div><div class="score-table__div text-end current__score" id="current-sequences"></div>
+                        <div class="score-table__div titles">Nombre del Jugador</div><div class="score-table__div text-end titles">Secuencias</div>
                     </div>
-                    <button class="rules__close">Cerrar</button>
-                </form>
+                    <div class="scores__table" id="scores-table">
+                    </div>
+                    <button class="button__close">X</button>
+                </div>
             </div>
         </div>
         <script src="src/script.js"></script>
