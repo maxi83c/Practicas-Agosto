@@ -13,24 +13,24 @@
                     <button class="red" id="button-red"></button>
                     <button class="yellow" id="button-yellow"></button>
                     <button class="blue" id="button-blue"></button>
-                    <div class="disable__buttons" id="disable-buttons"></div>
+                    <div class="disable-buttons" id="disable-buttons"></div>
                     <div class="center">
-                        <div class="border__power">
-                            <button class="button__power" id="button-power"></button>
+                        <div class="center__border">
+                            <button class="center__power" id="button-power"></button>
                         </div>
-                        <div class="disable__center invisible" id="disable-center"></div>
+                        <div class="center__disable invisible" id="disable-center"></div>
                     </div>
                 </div>
             </div>
-            <p class="selected__dificulty" id="selected-dificulty"></p>
+            <p class="selected-dificulty" id="selected-dificulty"></p>
             <p class="sequences" id="sequences"></p>
-            <p class="player__name invisible"  id="player-name"></p>
-            <button class="button__scores"></button>
-            <button class="button__config"></button>
+            <p class="player-name invisible"  id="player-name"></p>
+            <button class="button-scores"></button>
+            <button class="button-config"></button>
             <div class="popup__container" id="popup-container">
-                <form class="form__config" id="form-config">
+                <form class="config" id="form-config">
                     <input type="text" class="config__input" id="player" placeholder="Nombre del jugador" required maxlength="30">
-                    <label for="dificulty" class="config_label">Dificultad</label>
+                    <label for="dificulty" class="config__label">Dificultad</label>
                     <select name="dificulty" id="dificulty">
                         <option value="2s">muy fácil</option>
                         <option value="1.5s">fácil</option>
@@ -39,20 +39,20 @@
                         <option value="0.3">muy difícil</option>
                     </select>
                     <div class="config__div">
-                        <button class="button__ok">Aceptar</button>
-                        <button class="button__cancel invisible" id="button-cancel">Cancelar</button>
+                        <button class="button-ok">Aceptar</button>
+                        <button class="button-cancel invisible" id="button-cancel">Cancelar</button>
                     </div>
                 </form>
                 <div class="scores__container invisible" id="scores-container">
                     <p class="scores__title" id="title-positions"></p>
-                    <div class="current__score-table" id="scores">
-                        <div class="score-table__div titles current__score">Jugador Actual</div><div class="score-table__div text-end titles current__score">Secuencias</div>
-                        <div class="score-table__div current__score" id="current-player-score"></div><div class="score-table__div text-end current__score" id="current-sequences"></div>
-                        <div class="score-table__div titles">Nombre del Jugador</div><div class="score-table__div text-end titles">Secuencias</div>
+                    <div class="scores__current-table" id="scores">
+                        <div class="current-table__div titles current__score">Jugador Actual</div><div class="current-table__div text-end titles current__score">Secuencias</div>
+                        <div class="current-table__div current__score" id="current-player-score"></div><div class="current-table__div text-end current__score" id="current-sequences"></div>
+                        <div class="current-table__div titles">Nombre del Jugador</div><div class="current-table__div text-end titles">Secuencias</div>
                     </div>
                     <div class="scores__table" id="scores-table">
                     </div>
-                    <button class="button__close">X</button>
+                    <button class="button-close">X</button>
                 </div>
             </div>
         </div>
