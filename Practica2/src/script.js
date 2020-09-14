@@ -2,7 +2,7 @@ const divScoreRed = document.getElementById('score-red')
 const divScoreBlue = document.getElementById('score-blue')
 const redHand = document.getElementById('hand-red')
 const blueHand = document.getElementById('hand-blue')
-const buttonStart = document.getElementById('buttom-start')
+const buttonStart = document.getElementById('button-start')
 const countdown = document.getElementById('timer')
 const containerGame = document.getElementById('container-game')
 const containerForm = document.getElementById('container-config')
@@ -158,19 +158,19 @@ const setConfig = () => {
 containerGame.addEventListener('click', e =>{
     e.preventDefault()
     switch (e.target.className){
-        case 'buttom__rock': 
+        case 'button__rock': 
             selectedHand = 0
             break    
-        case 'buttom__paper': 
+        case 'button__paper': 
             selectedHand = 1
             break
-        case 'buttom__scissors': 
+        case 'button__scissors': 
             selectedHand = 2
             break        
-        case 'buttom__config': 
+        case 'button__config': 
             setConfig()
             break
-        case 'buttom__help':
+        case 'button__help':
             containerRules.classList.remove('invisible')
             break
         case 'start':
