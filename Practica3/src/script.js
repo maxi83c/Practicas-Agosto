@@ -158,9 +158,9 @@ const setScoreList = () =>{
         let listScoreHTML = ""
         for (let i = 0; i < storagesScores.length; i++){
                 if (i != playerScoreIndex)
-                        listScoreHTML= `${listScoreHTML}<div class="score__row">${storagesScores[i].name}</div><div class="score__row text-end">${storagesScores[i].score}</div>`  
+                        listScoreHTML= `${listScoreHTML}<div class="table__row">${storagesScores[i].name}</div><div class="table__row text-end">${storagesScores[i].score}</div>`  
                 else
-                        listScoreHTML= `${listScoreHTML}<div  class="score__row current__score">${storagesScores[i].name}</div><div class="score__row text-end current__score">${storagesScores[i].score}</div>`
+                        listScoreHTML= `${listScoreHTML}<div  class="table__row current__score">${storagesScores[i].name}</div><div class="table__row text-end current__score">${storagesScores[i].score}</div>`
         }
         scoreTableList.innerHTML = listScoreHTML
 }
@@ -256,7 +256,6 @@ const startGame = () =>{
 // verifica en que botón se hizo clic
 gameContainer.addEventListener('click', e =>{
     e.preventDefault()
-    console.log(e.target.className)
     switch (e.target.className){
         case 'green': 
                 clickButton(0)
@@ -270,22 +269,22 @@ gameContainer.addEventListener('click', e =>{
         case 'blue': 
                 clickButton(3)
                 break  
-        case 'button__power':
+        case 'center__power':
                 startGame()
                 break
-        case 'button__scores':
+        case 'button-scores':
                 showScores()
                 break
-        case 'button__config':
+        case 'button-config':
                 showConfig()
                 break               
-        case 'button__ok':
+        case 'button-ok':
                 resetGame()
                 break
-        case 'button__cancel':
+        case 'button-cancel':
                 hidePopup()
                 break
-        case 'button__close':
+        case 'button-close':
                 hidePopup()
     }
 })
