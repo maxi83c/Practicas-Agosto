@@ -1,5 +1,6 @@
 :root{
     --dificulty: 1s;
+    --size: min(50vh, 50vw);
 }
 body, .game__container{  
     margin: 0;
@@ -13,8 +14,8 @@ body, .game__container{
     place-items: center;
 }
 .simon__border{
-    width: 50vh;
-    height: 50vh;
+    width: var(--size);
+    height: var(--size);
     margin: 60px;
     background-color: #111111;
     border: solid 3px black;
@@ -251,7 +252,6 @@ body, .game__container{
 }
 .current, .selected__dificulty, .current__player{
     margin: 0;
-    display: inline-block;
     position: fixed;
     background-color: #222222;
     border-radius: 8px;
