@@ -250,7 +250,7 @@ body, .game__container{
 .invisible{
     display: none;
 }
-.current, .selected__dificulty, .current__player{
+.sequences, .selected__dificulty, .player__name{
     margin: 0;
     position: fixed;
     background-color: #222222;
@@ -259,12 +259,12 @@ body, .game__container{
     font-family: sans-serif;
     font-weight: bold;
 }
-.current, .selected__dificulty{
+.sequences, .selected__dificulty{
     color: darkcyan;
     border: 6px solid darkcyan;
     bottom: 5px;
 }
-.current__player{
+.player__name{
     left: 5px;
     top: 5px;
     color: goldenrod;
@@ -273,7 +273,7 @@ body, .game__container{
 .selected__dificulty{
     left: 5px;
 }
-.current{
+.sequences{
     right: 5px;
 }
 .button__close{
