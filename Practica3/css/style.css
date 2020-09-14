@@ -1,22 +1,18 @@
 :root{
-    --dificultad: 1s;
+    --dificulty: 1s;
 }
-
-body, .game-container{  
+body, .game__container{  
     margin: 0;
-    padding: 0;
     user-select: none;
     background-color: wheat;
 }
-
-.game-container{
+.game__container{
     min-height: 100vh;
     width: 100%;
     display: grid;
     place-items: center;
 }
-
-.simon-border{
+.simon__border{
     width: 50vh;
     height: 50vh;
     margin: 60px;
@@ -26,67 +22,67 @@ body, .game-container{
     padding: 2%;
     box-shadow: #333333 10px 10px 8px; 
 }
-
-.simon-container, .amarillo, .verde, .rojo, .azul, .desactivar-botones{
+.simon__container, .yellow, .green, .red, .blue, .disable__buttons{
     width: 100%;
     height: 100%;
 }
-.simon-container{
+.simon__container{
     background-color: #111111;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
 }
-
-.amarillo, .verde, .rojo, .azul{
+[class^='button']:focus, .green:focus, .red:focus, .blue:focus, .yellow:focus, .power:focus{
+    outline: none;
+}
+.yellow, .green, .red, .blue{
     position: absolute;
     display: block;
+    border: none;
 }
-.verde, .rojo{
+.green, .red{
     top: -52%;
 }
-.verde, .amarillo{
+.green, .yellow{
     left: -52%;
 }
-.amarillo, .azul{
+.yellow, .blue{
     bottom: -52%;
 }
-.rojo, .azul{
+.red, .blue{
     right: -52%;
 }
-.verde{
+.green{
     background-color: darkolivegreen;
 }
-.rojo{
+.red{
     background-color: #8f2020;
 }
-.amarillo{
+.yellow{
     background-color: darkgoldenrod;
 }
-.azul{
+.blue{
     background-color: #332685;
 }
-
-.verde:active{
+.green:active{
     background-color: lime;
 }
-.rojo:active{
+.red:active{
     background-color: red;
 }
-.amarillo:active{
+.yellow:active{
     background-color: yellow;
 }
-.azul:active{
+.blue:active{
     background-color: dodgerblue;
 }
-
-.desactivar-botones{
+.disable__buttons{
     background-color: transparent;
     position: absolute;
     top: 0%;
     left: 0%;
 }
-.centro{
+.center{
     width: 60%;
     height: 60%;
     background-color: #111111;
@@ -97,14 +93,14 @@ body, .game-container{
     display: grid;
     place-items: center;
 }
-.desactivar-centro{
+.disable__center{
     width: 60%;
     height: 60%;
     background-color: transparent;
     border-radius: 50%;
     position: absolute;
 }
-.border-power{
+.border__power{
     width: 70%;
     height: 70%;
     border-radius: 50%;
@@ -112,44 +108,41 @@ body, .game-container{
     display: grid;
     place-items: center;
 }
-.boton-power{
+.button__power{
     width: 50%;
     height: 50%;
     display: flex;
     border-radius: 50%;
     background-color: #111111;
+    border: none;
     position: absolute;
     cursor: pointer;
     top: 25%;
     left: 25%;
     overflow: hidden;
 } 
-
-.boton-power::before{
+.button__power::before{
     content:"";
     width: 60%;
     height: 60%;
     background-color: white;
     clip-path: polygon(65% 30%, 65% 27%, 67% 24%, 71% 23%, 75% 25%, 78% 29%, 81% 33%, 83% 38%, 85% 44%, 86% 49%, 85% 54%, 84% 59%, 83% 64%, 79% 70%, 73% 77%, 66% 82%, 56% 85%, 46% 85%, 37% 83%, 30% 79%, 23% 73%, 17% 64%, 15% 55%, 15% 46%, 17% 37%, 20% 31%, 26% 24%, 31% 23%, 34% 25%, 35% 28%, 34% 32%, 30% 36%, 28% 41%, 26% 46%, 26% 52%, 28% 58%, 31% 64%, 34% 67%, 39% 70%, 45% 72%, 53% 73%, 62% 70%, 68% 65%, 72% 57%, 73% 53%, 73% 46%, 72% 40%, 68% 35%, 56% 35%, 56% 55%, 51% 58%, 44% 55%, 44% 16%, 46% 13%, 50% 12%, 53% 12%, 56% 15%, 56% 35%, 68% 35%);
-    /* clip-path: polygon(61% 23%, 61% 16%, 62% 15%, 63% 15%, 65% 16%, 67% 16%, 70% 18%, 72% 19%, 74% 21%, 76% 23%, 78% 24%, 80% 26%, 82% 28%, 83% 30%, 85% 33%, 86% 35%, 87% 38%, 88% 41%, 89% 44%, 90% 47%, 90% 50%, 91% 53%, 91% 55%, 91% 58%, 90% 61%, 90% 64%, 89% 67%, 88% 70%, 87% 73%, 86% 76%, 84% 78%, 83% 81%, 81% 83%, 79% 85%, 77% 88%, 74% 90%, 72% 92%, 70% 93%, 68% 94%, 66% 95%, 63% 96%, 60% 97%, 58% 97%, 55% 98%, 52% 98%, 49% 98%, 46% 98%, 43% 97%, 40% 97%, 37% 96%, 34% 95%, 32% 94%, 30% 92%, 27% 91%, 25% 89%, 23% 87%, 21% 85%, 19% 83%, 17% 80%, 15% 78%, 14% 75%, 13% 72%, 11% 69%, 10% 66%, 10% 63%, 10% 59%, 10% 56%, 10% 54%, 10% 51%, 10% 49%, 10% 46%, 11% 44%, 11% 41%, 13% 38%, 14% 36%, 15% 33%, 16% 31%, 17% 29%, 19% 27%, 20% 26%, 22% 24%, 24% 22%, 26% 20%, 29% 19%, 31% 17%, 33% 16%, 35% 15%, 37% 14%, 38% 14%, 40% 15%, 40% 16%, 40% 30%, 40% 31%, 39% 31%, 37% 32%, 35% 34%, 34% 35%, 32% 37%, 30% 39%, 29% 41%, 27% 43%, 26% 46%, 26% 48%, 25% 52%, 25% 55%, 25% 57%, 25% 60%, 26% 63%, 27% 66%, 28% 68%, 29% 71%, 31% 73%, 33% 75%, 35% 77%, 38% 78%, 40% 80%, 43% 81%, 46% 82%, 48% 82%, 51% 82%, 53% 82%, 56% 81%, 58% 81%, 60% 80%, 62% 79%, 64% 78%, 66% 76%, 68% 74%, 70% 72%, 71% 70%, 73% 67%, 74% 65%, 75% 62%, 75% 58%, 75% 56%, 75% 53%, 75% 50%, 74% 47%, 73% 44%, 72% 42%, 70% 40%, 69% 38%, 67% 36%, 65% 34%, 63% 33%, 62% 32%, 62% 31%, 61% 31%, 61% 28%, 57% 27%, 57% 43%, 57% 45%, 55% 47%, 54% 48%, 53% 49%, 51% 49%, 49% 49%, 47% 48%, 46% 47%, 45% 46%, 44% 45%, 44% 8%, 44% 7%, 45% 5%, 46% 4%, 47% 2%, 49% 2%, 50% 1%, 51% 1%, 53% 2%, 54% 2%, 55% 3%, 56% 4%, 57% 5%, 57% 6%, 57% 27%, 61% 28%); */
     position: absolute;
     top: 20%;
     left: 20%;
     transition: background-color 0.3s linear;
 }
-
-.sequence-ok.boton-power::before{
+.sequence-ok.button__power::before{
     background-color: lime;
 }
-.sequence-fail.boton-power::before{
+.sequence-fail.button__power::before{
     background-color: red;
 }
-
-.boton-power:active::before{
+.button__power:active::before{
     transform: scale(0.9);
 }
-
-.boton-puntajes, .boton-config{
+/* botones de configuración y tabla de puntajes */
+.button__scores, .button__config{
     display: inline-block;
     position: fixed;
     text-decoration: none;
@@ -162,55 +155,48 @@ body, .game-container{
     box-shadow: #111111 5px 5px 8px; 
     transition: transform .3s;
 }
-
-.boton-puntajes{
+.button__scores{
     border-color: goldenrod; 
     right: 90px;
 }
-
-.boton-puntajes::before, .boton-puntajes::after, .boton-config::before{
+.button__scores::before, .button__scores::after, .button__config::before{
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
     transition: transform 1s;
 }
-
-.boton-puntajes::before, .boton-puntajes::after{
+.button__scores::before, .button__scores::after{
     background-color: goldenrod;
 }
-.boton-puntajes::before{
+.button__scores::before{
     clip-path: polygon(28% 15%, 72% 15%, 72% 42%, 69% 51%, 63% 58%, 57% 61%, 56% 72%, 63% 73%, 63% 77%, 69% 77%, 69% 85%, 31% 85%, 31% 77%, 37% 77%, 37% 73%, 43% 72%, 43% 61%, 36% 57%, 30% 50%, 27% 43%);
 }
-
-.boton-puntajes::after{
+.button__scores::after{
     clip-path: polygon(18% 21%, 23% 50%, 27% 49%, 23% 25%, 76% 25%, 72% 45%, 26% 44%, 27% 49%, 77% 49%, 82% 21%); 
 }
-
-.boton-puntajes:hover::after, .boton-puntajes:hover::before{
+.button__scores:hover::after, .button__scores:hover::before{
     transform: scaleX(-1);
 }
-
-.boton-puntajes:active, .boton-config:active{
+.button__scores:active, .button__config:active{
     transform: scale(0.8);
     box-shadow: none;
 }
-
-.boton-config{
+.button__config{
     border-color: darkcyan; 
     right: 5px;
 }
-
-.boton-config::before{
+.button__config::before{
     background-color: darkcyan;
     clip-path: polygon(19% 21%, 31% 25%, 38% 21%, 40% 8%, 60% 9%, 62% 21%, 69% 25%, 81% 21%, 91% 38%, 81% 46%, 81% 55%, 64% 55%, 64% 48%, 62% 41%, 56% 37%, 46% 36%, 39% 40%, 36% 47%, 36% 52%, 37% 58%, 41% 62%, 44% 64%, 48% 65%, 55% 64%, 60% 61%, 63% 58%, 64% 55%, 81% 55%, 91% 62%, 80% 79%, 69% 75%, 62% 79%, 59% 91%, 40% 91%, 38% 79%, 31% 75%, 19% 79%, 10% 62%, 19% 54%, 19% 46%, 9% 38%);
 }
-
-.boton-config:hover::before{
+.button__config:hover::before{
     transform: rotate(360deg);
 }
-
-.popup-container{
+/* popup de configuración */
+.popup__container{
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -218,8 +204,7 @@ body, .game-container{
     display: grid;
     place-items: center;
 }
-
-.formulario-config{
+.form__config{
     background-color: #222222;
     border: 5px solid darkcyan;
     border-radius: 10px;
@@ -227,24 +212,20 @@ body, .game-container{
     font-family: sans-serif;
     color: darkcyan;
 }
-
-.formulario-config input{
+.config__input{
     display: block;
     width: 240px;
     margin-bottom: 20px;
 }
-
-.formulario-config label{
+.config_label{
     margin-right: 20px;  
 }
-
-.formulario-config div{
+.config__div{
     margin-top: 20px;
     display: flex;
     justify-content: flex-end;
 }
-
-.formulario-config [class^="boton"], .boton-cerrar{
+.button__ok, .button__cancel, .button__close{
     display: inline-block;
     background-color: transparent;
     border-radius: 5px;
@@ -252,42 +233,23 @@ body, .game-container{
     font-family: sans-serif;
    transition: transform 0.3s;
 }
-
-.formulario-config [class^="boton"]{
+.button__ok, .button__cancel{
     border: 2px solid darkcyan;
     color: darkcyan;
     margin-left: 20px;
     padding: 5px 3px;
 }
-
-.formulario-config [class^="boton"]:hover{
+.button__ok:hover, .button__cancel:hover{
     color: goldenrod;
     border-color: goldenrod;
 }
-
-.formulario-config [class^="boton"]:active{
+.button__ok:active, .button__cancel:active{
     transform: scale(0.9);
 }
-
 .invisible{
-    display: none !important;
+    display: none;
 }
-
-.puntajes-container{
-    background-color: #222222;
-    border: 5px solid goldenrod;
-    border-radius: 10px;
-    padding: 60px 40px 40px;
-    width: 60%;
-    height: 70vh;
-    min-width: 500px;
-    position: relative;
-    font-family: sans-serif;
-    color: goldenrod;
-    overflow: hidden;
-}
-
-.actual, .dificultad-seleciconada, .jugador-actual{
+.current, .selected__dificulty, .current__player{
     margin: 0;
     display: inline-block;
     position: fixed;
@@ -297,28 +259,24 @@ body, .game-container{
     font-family: sans-serif;
     font-weight: bold;
 }
-
-.actual, .dificultad-seleciconada{
+.current, .selected__dificulty{
     color: darkcyan;
     border: 6px solid darkcyan;
     bottom: 5px;
 }
-.jugador-actual{
+.current__player{
     left: 5px;
     top: 5px;
     color: goldenrod;
     border: 6px solid goldenrod;
 }
-
-.dificultad-seleciconada{
+.selected__dificulty{
     left: 5px;
 }
-
-.actual{
+.current{
     right: 5px;
 }
-
-.boton-cerrar{
+.button__close{
     border: 2px solid goldenrod;
     color: goldenrod;
     position: absolute;
@@ -327,8 +285,21 @@ body, .game-container{
     padding: 1px 3px;
     font-weight: bold;
 }
-
-.puntajes-container p{
+/* tabla de puntajes */
+.scores__container{
+    background-color: #222222;
+    border: 5px solid goldenrod;
+    border-radius: 10px;
+    padding: 60px 40px 40px;
+    width: 60%;
+    height: 70%;
+    min-width: 360px;
+    position: relative;
+    font-family: sans-serif;
+    color: goldenrod;
+    overflow: hidden;
+}
+.scores__title{
     position: absolute;
     top: -5px;
     width: 100%;
@@ -336,18 +307,14 @@ body, .game-container{
     font-size: 25px;
     font-weight: bold;
 }
-
-.boton-cerrar:hover{
+.button__close:hover{
     color: darkcyan;
     border-color: darkcyan;
 }
-
-.boton-cerrar:active{
+.button__close:active{
     transform: scale(0.5);
 }
-
-
-.tabla-puntaje-actual{
+.current__score-table{
     position: relative;
     width: 100%;
     overflow-y: auto;
@@ -356,8 +323,7 @@ body, .game-container{
     grid-template-rows: 60px 30px 60px;
     grid-auto-rows: 30px;
 }
-
-.tabla-puntajes{
+.scores__table{
     position: relative;
     width: 100%;
     height: 50vh;
@@ -367,43 +333,47 @@ body, .game-container{
     grid-auto-rows: 30px;
     margin-bottom: 20px;
 }
-
-.tabla-puntajes div, .tabla-puntaje-actual div{
+.score__row, .score-table__div{
     padding: 0 10px;
     border-bottom: 2px solid goldenrod;
     height: 20px;
     margin-bottom: 5px;
 }
-
-.tabla-puntaje-actual div{
+.score-table__div{
     border-bottom: 2px solid darkcyan;
 }
-
 .text-end {
     text-align: end;
 }
-
-
-.tabla-puntaje-actual .titulos{
+.titles{
     font-size: 23px;
     font-weight: bold;
     padding-bottom: 10px;
     border-bottom: 4px double goldenrod;
     margin-top: 20px;
+    
 }
-
-.tabla-puntajes .puntaje-actual, .tabla-puntaje-actual .puntaje-actual{
+.current__score{
     color: darkcyan;
+    border-color: darkcyan;
 }
-.tabla-puntaje-actual .titulos.puntaje-actual{
-    border-bottom: 4px double darkcyan;
-    margin-top: 0;
-}
+@media (max-width: 850px) {
+    .score__row, .current__score{
+        font-size: 12px;
+    }
+    .titles, .scores__title{
+        font-size: 20px;
+    }
+    .scores__title{
+        margin-bottom: 20px;
+        text-align: start;
+    } 
 
-.animate-power-play.boton-power::before{
+}
+/* animaciones */
+.animate-power-play.button__power::before{
     animation: animate-power-play 1s linear;
 }
-
 @keyframes animate-power-play {
     25%{
         background-color: blue;
@@ -418,41 +388,33 @@ body, .game-container{
         background-color: white;
     }    
 }
-
 .animate-green{
-    animation: animate-green var(--dificultad);
+    animation: animate-green var(--dificulty);
 }
-
 @keyframes animate-green {
     100%{
         background-color: lime;
     }    
 }
-
 .animate-red{
-    animation: animate-red var(--dificultad);
+    animation: animate-red var(--dificulty);
 }
-
 @keyframes animate-red {
     100%{
         background-color: red;
     }    
 }
-
 .animate-yellow{
-    animation: animate-yellow var(--dificultad);
+    animation: animate-yellow var(--dificulty);
 }
-
 @keyframes animate-yellow {
     100%{
         background-color: yellow;
     }    
 }
-
 .animate-blue{
-    animation: animate-blue var(--dificultad);
+    animation: animate-blue var(--dificulty);
 }
-
 @keyframes animate-blue {
     100%{
         background-color: dodgerblue;
