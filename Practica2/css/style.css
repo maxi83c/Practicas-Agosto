@@ -114,7 +114,7 @@ body{
     text-shadow: blue calc(0.8 * var(--size)) calc(0.8 * var(--size)) calc(2.5 * var(--size)), red calc(-0.8 * var(--size)) calc(-0.8 * var(--size)) calc(2.5 * var(--size));
 }
 
-[class^='buttom']{
+[class^='button']{
     position:relative;
     text-decoration: none;
     font-size: calc(2 * var(--size));
@@ -128,16 +128,16 @@ body{
     border: calc(1.2 * var(--size))  solid #1f4976;
     box-shadow: #1f4976 5px 5px 8px; 
 }
-.buttom__rock, .buttom__paper, .buttom__scissors{
+.button__rock, .button__paper, .button__scissors{
     background-image:  radial-gradient(white 20%,#222222);
 }
-.buttom__paper, .buttom__scissors{
+.button__paper, .button__scissors{
     margin-left: 30px;
 }
-.buttom__scissors{
+.button__scissors{
     margin-left: 30px; 
 }
-[class^='buttom']::before{
+[class^='button']::before{
     content:"";
     display: block;
     width: 100%;
@@ -150,29 +150,29 @@ body{
     position: absolute;
     transition: transform 0.8s;
 }
-[class^='buttom']:focus, .start:focus, .config__ok:focus, .config__cancel:focus, .popup__close:focus, .rules__close:focus{
+[class^='button']:focus, .start:focus, .config__ok:focus, .config__cancel:focus, .popup__close:focus, .rules__close:focus{
     outline: none;
 }
-.buttom__scissors::before{
+.button__scissors::before{
     background-image: url(../img/scissors-blue.png);
 }
-.buttom__scissors:hover::before{
+.button__scissors:hover::before{
     transform: rotate(-10deg);
 }
-.buttom__paper::before{
+.button__paper::before{
     background-image: url(../img/paper-blue.png);
 }
-.buttom__paper:hover::before{
+.button__paper:hover::before{
     transform: rotate(-5deg);
 }
-.buttom__rock::before{
+.button__rock::before{
     background-image: url(../img/rock-blue.png);
     background-position: center calc(-2.5 * var(--size));
 }
-.buttom__rock:hover::before{
+.button__rock:hover::before{
     transform: rotate(-10deg);
 }
-.buttom__config, .buttom__help{
+.button__config, .button__help{
     border: calc(0.8 * var(--size))  solid #1f4976;
     background-color:skyblue;
     transition: transform 0.3s;
@@ -182,26 +182,26 @@ body{
     width: calc(8 * var(--size));
     height: calc(8 * var(--size));
 }
-.buttom__help{
+.button__help{
     left: calc(1.2 * var(--size));
 }
-.buttom__config::before{
+.button__config::before{
     background-color: darkslategray;
     clip-path: polygon(19% 21%, 31% 25%, 38% 21%, 40% 8%, 60% 9%, 62% 21%, 69% 25%, 81% 21%, 91% 38%, 81% 46%, 81% 55%, 64% 55%, 64% 48%, 62% 41%, 56% 37%, 46% 36%, 39% 40%, 36% 47%, 36% 52%, 37% 58%, 41% 62%, 44% 64%, 48% 65%, 55% 64%, 60% 61%, 63% 58%, 64% 55%, 81% 55%, 91% 62%, 80% 79%, 69% 75%, 62% 79%, 59% 91%, 40% 91%, 38% 79%, 31% 75%, 19% 79%, 10% 62%, 19% 54%, 19% 46%, 9% 38%);
 }
-.buttom__help::before{
+.button__help::before{
     color: darkslategray;
     content: "?";
     font-size: calc(5.5 * var(--size));
     font-weight: bold;
 }
-.buttom__help:hover::before{
+.button__help:hover::before{
     transform: rotate(-360deg);
 }
-.buttom__config:hover::before{
+.button__config:hover::before{
     transform: rotate(360deg);
 }
-[class^='buttom']:active{
+[class^='button']:active{
     transform: scale(0.9);
     box-shadow: none;
 }
