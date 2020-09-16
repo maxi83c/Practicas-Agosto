@@ -27,7 +27,7 @@ let gameSec = []
 let score = 0
 let lose = false
 let dificultTyme = 1000
-selectedDifficulty.textContent  = `Dificualtad: ${difficulty.options[difficulty.selectedIndex].textContent}`
+selectedDifficulty.textContent  = `Dificultad: ${difficulty.options[difficulty.selectedIndex].textContent}`
 current.textContent = `Secuencias: ${score}`
 
 let playerName = ''
